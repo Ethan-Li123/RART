@@ -1,13 +1,13 @@
 # Regional Anchor Routing for Multi-Object Motion Transfer
 
-Yuze Li<sup>1</sup>, Fuchen Long<sup>2†</sup>, Xinlong Sun<sup>2</sup>, Cheng Yan<sup>1§</sup>, Xinyu Zhang<sup>3</sup>, Xi Chen<sup>2§</sup>
+Yuze Li<sup>1</sup>, Fuchen Long<sup>2</sup>, Xinlong Sun<sup>2</sup>, Cheng Yan<sup>1§</sup>, Xinyu Zhang<sup>3</sup>, Xi Chen<sup>2§</sup>
 
 <sup>1</sup> Tianjin University  
 <sup>2</sup> Smart Creation Platform Department, Online Video BU, Tencent  
 <sup>3</sup> University of Auckland
 
 Work done during the Tencent internship.  
-† Project Leader · § Corresponding Authors
+§ Corresponding Authors
 
 RART transfers independent reference motions to designated objects in a target image, using Wan2.2-TI2V-5B and a DisMo motion encoder.
 
