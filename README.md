@@ -45,7 +45,7 @@ Download the ViT-L/14 backbone **with registers** from [DINOv2](https://github.c
 wget -O weights/dinov2_vitl14_reg.pth https://dl.fbaipublicfiles.com/dinov2/dinov2_vitl14/dinov2_vitl14_reg4_pretrain.pth
 ```
 
-The RART checkpoint will be available at [llyyzzz/RART](https://huggingface.co/llyyzzz/RART). Download it with:
+The RART checkpoint is available at [llyyzzz/RART](https://huggingface.co/llyyzzz/RART). Download it with:
 
 ```bash
 hf download llyyzzz/RART temporal_motion.pt --local-dir outputs/checkpoint-200000
