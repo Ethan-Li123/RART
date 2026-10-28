@@ -72,6 +72,7 @@ Five examples are included in `data/RART_test_data/`:
 ```text
 data/RART_test_data/
   inference.csv
+  README.md
   case_01/  # two people
   case_02/  # creature and owl
   case_03/  # capybara and person
