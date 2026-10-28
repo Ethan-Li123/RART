@@ -1723,6 +1723,7 @@ def main():
 
     # ---- collect tasks ----
     tasks = []
+    parse_failed = 0
     if args.inference_csv:
         df = pd.read_csv(args.inference_csv)
         end = len(df) if args.csv_limit < 0 else min(
@@ -1738,10 +1739,17 @@ def main():
                 task = _csv_row_to_task(row.to_dict(), args.output_dir)
                 tasks.append(task)
             except Exception as _e:
+                parse_failed += 1
                 _print(f"[warn] csv row {i} parse failed: {_e}; skip")
         _print_main(
             f"Collected {len(tasks)} tasks from {args.inference_csv}"
         )
+        if not tasks:
+            _print_main(
+                f"[err] No valid inference tasks were selected "
+                f"({parse_failed} CSV row(s) failed to parse)."
+            )
+            return 1
 
         # ---- task assignment: stride split (rank=0 takes 0,K,2K,...; rank=1 takes 1,K+1,...) ----
         my_tasks = tasks[rank::world_size]
@@ -1803,6 +1811,8 @@ def main():
     else:
         total_ok, total_failed = n_my_ok, failed
 
+    # Every rank parsed the same CSV; count invalid rows once, after reduction.
+    total_failed += parse_failed
     _print(f"Local: {n_my_ok}/{n_my} succeeded, {failed} failed")
     if rank == 0:
         total = total_ok + total_failed
@@ -1813,7 +1823,8 @@ def main():
             )
         else:
             _print_main(f"\n=== Done: all {total} tasks succeeded ===")
+    return 1 if total_failed else 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
