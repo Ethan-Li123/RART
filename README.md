@@ -63,7 +63,7 @@ outputs/
     temporal_motion.pt       # RART
 ```
 
-Model weights and generated videos are excluded from Git. If weights are already available locally, place them at the paths above or edit the path arguments in `scripts/run_inference.sh`.
+If weights are already available locally, place them at the paths above or edit the path arguments in `scripts/run_inference.sh`.
 
 ## Test data
 
@@ -72,7 +72,6 @@ Five examples are included in `data/RART_test_data/`:
 ```text
 data/RART_test_data/
   inference.csv
-  README.md
   case_01/  # two people
   case_02/  # creature and owl
   case_03/  # capybara and person
@@ -80,7 +79,7 @@ data/RART_test_data/
   case_05/  # cartoon dog and koala
 ```
 
-Each example contains two reference videos, their foreground masks, a target image and two target-object masks. Paths in `inference.csv` are relative to the project root. Reference, mask, person and action entries follow the same object order.
+Each example contains two reference videos, their foreground masks, a target image and two target-object masks. Reference, mask, person and action entries follow the same object order.
 
 ## Inference
 
@@ -91,7 +90,7 @@ conda activate rart
 bash scripts/run_inference.sh
 ```
 
-The script explicitly lists GPU selection, process count, weight paths, input CSV and output directory. It uses GPUs 0 and 1 by default. For one GPU, set `CUDA_VISIBLE_DEVICES=0`, change `--num_processes` to 1 and remove `--multi_gpu` in the script.
+For one GPU, set `CUDA_VISIBLE_DEVICES=0`, change `--num_processes` to 1 and remove `--multi_gpu` in the script.
 
 Run only the first example, or select a subset:
 
@@ -106,7 +105,7 @@ Outputs are saved as `outputs/inference/case_01.mp4` through `case_05.mp4`. Add 
 bash scripts/run_inference.sh --concat_ref
 ```
 
-Sampling defaults are defined in `scripts/inference_temporal.py`: 49 frames, 480 x 736 resolution, 50 steps, text guidance 3, motion guidance 5 and seed 42. Arguments appended to the shell command override its values, for example `--sampling_steps 30 --seed 123`.
+Sampling defaults are defined in `scripts/inference_temporal.py`: 49 frames, 480 x 736 resolution, 50 steps, text guidance 3, motion guidance 5 and seed 42.
 
 T5 CPU offloading precomputes text embeddings before loading Wan, then moves T5 to CPU. It is enabled by default; pass `--no_t5_cpu_offload` to disable it. VAE offloading is also enabled; use `--no_vae_offload` to disable it.
 
