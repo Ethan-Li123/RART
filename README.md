@@ -11,7 +11,7 @@ Work done during the Tencent internship.
 
 RART transfers independent reference motions to designated objects in a target image, using Wan2.2-TI2V-5B and a DisMo motion encoder.
 
-[Project page](https://ethan-li123.github.io/RART_page/) · [RART weights](https://huggingface.co/llyyzzz/RART)
+[Paper](https://arxiv.org/abs/2610.39478) · [Project page](https://ethan-li123.github.io/RART_page/) · [RART weights](https://huggingface.co/llyyzzz/RART)
 
 ## Environment
 
@@ -117,6 +117,22 @@ scripts/          # inference entry point and launcher
 wan/              # Wan backbone, text encoder, VAE and solvers
 wan_motion_attn/  # motion encoder and regional attention
 DisMo/            # bundled motion-extractor source
+```
+
+## Citation
+
+If you find RART useful, please cite:
+
+```bibtex
+@misc{li2026regionalanchorrouting,
+  title={Regional Anchor Routing for Multi-Object Motion Transfer},
+  author={Yuze Li and Fuchen Long and Xinlong Sun and Cheng Yan and Xinyu Zhang and Xi Chen},
+  year={2026},
+  eprint={2610.39478},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV},
+  url={https://arxiv.org/abs/2610.39478}
+}
 ```
 
 Acknowledgements: [Wan2.2](https://github.com/Wan-Video/Wan2.2) and [DisMo](https://github.com/CompVis/DisMo).
